@@ -22,14 +22,45 @@ var http = require('http');
 //var collections=['register'];
 var gpio = require('rpi-gpio');
 
-gpio.setup(16,gpio.DIR_OUT, write);
+// gpio.setup(16,gpio.DIR_OUT, write);
 
-function write() {
-  gpio.write(16,true,function(err){
-    if(err) throw err;
-    console.log("written to pin");
- });
+// function write() {
+//   gpio.write(16,true,function(err){
+//     if(err) throw err;
+//     console.log("written to pin");
+//  });
+// }
+
+
+var gpio = require('rpi-gpio');
+ 
+var pin   = 7;
+var delay = 2000;
+var count = 0;
+var max   = 3;
+ 
+gpio.setup(pin, gpio.DIR_OUT, on);
+ 
+function on() {
+    if (count >= max) {
+        gpio.destroy(function() {
+            console.log('Closed pins, now exit');
+        });
+        return;
+    }
+ 
+    setTimeout(function() {
+        gpio.write(pin, 1, off);
+        count += 1;
+    }, delay);
 }
+ 
+function off() {
+    setTimeout(function() {
+        gpio.write(pin, 0, on);
+    }, delay);
+}
+
 
 //var gpio=require("pi-gpio");
 //gpio.open(16,"output", function(err){
