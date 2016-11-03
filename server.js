@@ -200,7 +200,7 @@ res.json("done");
 app.post('/bulbflicker', function(req, res)
 {
 
-var pin   = 10;
+var pin   = 16;
 var delay = 300;
 var count = 0;
 var max   = 20;
