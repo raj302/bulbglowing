@@ -220,7 +220,8 @@ $scope.bulbflicker = function()
 {
   $scope.disableonbutton = true;
   $scope.disabletimerbutton = true;
-  $http.post('/bulbflicker', 10).success(function(response){
+  $scope.flickstatus = 10;
+  $http.post('/bulbflicker', $scope.flickstatus).success(function(response){
          console.log(response);
          $scope.disableflickeron = true;
          $scope.disableflickeroff = false;
