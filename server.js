@@ -15,9 +15,22 @@ var express=require('express');
 var app=express();
 var router=express.Router();
 var path=require('path');
+// var router=express.Router();
 var bodyPaser=require('body-parser');
 var http = require('http');
+//var mongojs=require('mongojs');
+//var collections=['register'];
 var gpio = require('rpi-gpio');
+
+// gpio.setup(16,gpio.DIR_OUT, write);
+
+// function write() {
+//   gpio.write(16,true,function(err){
+//     if(err) throw err;
+//     console.log("written to pin");
+//  });
+// }
+
 
 var gpio = require('rpi-gpio');
  
@@ -48,6 +61,17 @@ function off() {
     }, delay);
 }
 
+
+//var gpio=require("pi-gpio");
+//gpio.open(16,"output", function(err){
+   //gpio.write(16,1,function(){
+     //gpio.close(16);
+   //});
+  //});
+
+
+// python code execution starts here
+//this code takes time to execute. Try another if possible. name is python code 1
 var PythonShell = require('python-shell');
 
 var options = {
@@ -56,6 +80,86 @@ var options = {
   //pythonOptions: ['-u'],
    args: [30]
 };
+
+
+
+ // PythonShell.run('test01.py', options, function (err, results) {
+ //   if (err) throw err;
+ //   // results is an array consisting of messages collected during execution
+ //   console.log("finished executing python script");
+ //   console.log(results);
+ // });
+
+
+//execution of python code 2 starts here. Its not tested yet.
+// python code 2 starts here with comment.
+// var options = {
+//   mode: 'text',
+//   pythonPath: 'C:\Users\rajeev\AppData\Local\Programs\Python\Python35-32',
+//   pythonOptions: ['-u'],
+//   scriptPath: 'F:\website\ipl5th_sem_working'
+//   // args: ['value1', 'value2', 'value3']
+// };
+
+// PythonShell.run('my_script.py', options, function (err, results) {
+//   if (err) throw err;
+//   // results is an array consisting of messages collected during execution
+//   console.log('results: %j', results);
+// });
+
+
+// PythonShell.run('test.py', function (err) {
+//   if (err) throw err;
+//   console.log('finished');
+// });
+//execution of python code 2 ends here.
+
+//var spawn = require("child_process").spawn;
+
+// // On Windows Only ...
+// const spawn = require('child_process').spawn;
+// const bat = spawn('cmd.exe', ['/c', 'my.bat']);
+
+// bat.stdout.on('data', (data) => {
+//   console.log(data);
+// });
+
+// bat.stderr.on('data', (data) => {
+//   console.log(data);
+// });
+
+// bat.on('exit', (code) => {
+//   console.log(`Child exited with code ${code}`);
+// });
+
+// // On Windows Only ...
+// const spawn = require('child_process').spawn;
+// const bat = spawn('cmd.exe', ['/c', 'my.bat']);
+
+// bat.stdout.on('data', (data) => {
+//   console.log(data);
+// });
+
+// bat.stderr.on('data', (data) => {
+//   console.log(data);
+// });
+
+// bat.on('exit', (code) => {
+//   console.log(`Child exited with code ${code}`);
+// });
+
+// const spawn = require('child_process').spawn;
+
+// const child = spawn(process.argv[0], ['test.py'], {
+//   detached: true,
+//   stdio: 'ignore'
+// });
+
+// child.unref();
+
+// var db = mongojs('mongodb://dev.frugaltek.com:27017/flms', ['register']);
+ // var db = mongojs('mongodb://bhuvanesh:123@ds023398.mlab.com:23398/heroku_461p1j1s', collections);
+var port = Number(process.env.PORT || 3000)
 var session = require('express-session');
 app.use(session({
     secret: '2C44-4D44-WppQ38S',
@@ -102,8 +206,17 @@ var pin   = 16;
 var delay = 300;
 var count = 0;
 var max   = 20;
+ 
 gpio.setup(pin, gpio.DIR_OUT, on);
+ 
 function on() {
+    // if (count >= max) {
+    //     gpio.destroy(function() {
+    //         console.log('Closed pins, now exit');
+    //     });
+    //     return;
+    // }
+ 
     setTimeout(function() {
         gpio.write(pin, 1, off);
         count += 1;
@@ -115,6 +228,22 @@ function off() {
         gpio.write(pin, 0, on);
     }, delay);
 }
+
+//   var optionsflickeron = {
+//   mode: 'text',
+//   //pythonPath: '/usr/lib/python2.7',
+//   //pythonOptions: ['-u'],
+//    args: [10]
+// };
+//   console.log("bulbflicker is called");
+//   //console.log(req.body);
+//   PythonShell.run('bulbflickeron.py', optionsflickeron, function (err, results) {
+//   if (err) throw err;
+//   // results is an array consisting of messages collected during execution
+//   console.log("finished executing python script");
+//   console.log(results);
+// });
+// res.json("done");
 
 });
 app.post('/bulbflickeroff', function(req, res)
@@ -130,6 +259,23 @@ function on() {
       console.log('Closed pins, now exit');
          });
       }
+
+
+//   var optionsflickeroff = {
+//   mode: 'text',
+//   //pythonPath: '/usr/lib/python2.7',
+//   //pythonOptions: ['-u'],
+//    args: [10]
+// };
+//   console.log("bulbflicker off is called");
+//   //console.log(req.body);
+//   PythonShell.run('bulbflickeron.py', optionsflickeroff, function (err, results) {
+//   if (err) throw err;
+//   // results is an array consisting of messages collected during execution
+//   console.log("finished executing python script");
+//   console.log(results);
+// });
+// res.json("done");
 });
 
 app.post('/glowled1', function(req, res)
@@ -162,7 +308,7 @@ res.json("done");
 
 app.post('/flickerled1on', function(req, res)
 {
-var pin   = 10;
+var pin   = 8;
 var delay = 500;
 var count = 0;
 var max   = 20;
@@ -185,7 +331,7 @@ function off() {
 
 app.post('/flickerled1off', function(req, res)
 {
-var pin   = 10;
+var pin   = 8;
 gpio.setup(pin, gpio.DIR_OUT, on);
 function on() {
          gpio.destroy(function() {
@@ -196,7 +342,7 @@ function on() {
 
 app.post('/flickerled2on', function(req, res)
 {
-var pin   = 8;
+var pin   = 10;
 var delay = 500;
 var count = 0;
 var max   = 20;
@@ -219,7 +365,7 @@ function off() {
 
 app.post('/flickerled2off', function(req, res)
 {
-var pin   = 8;
+var pin   = 10;
 gpio.setup(pin, gpio.DIR_OUT, on);
 function on() {
          gpio.destroy(function() {
