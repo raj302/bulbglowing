@@ -574,7 +574,7 @@ $scope.flickerled1off = function()
          console.log(response);
        });
 }
-$scope.flickerled1on = function()
+$scope.flickerled2on = function()
 {
   $http.post('/flickerled2on').success(function(response){
          console.log(response);
