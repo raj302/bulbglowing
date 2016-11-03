@@ -247,11 +247,17 @@ function off() {
 app.post('/bulbflickeroff', function(req, res)
 {
 
-  function off() {
-    setTimeout(function() {
-        gpio.write(pin, 0, on);
-    }, delay);
-}
+
+var pin   = 16;
+ 
+gpio.setup(pin, gpio.DIR_OUT, on);
+ 
+function on() {
+         gpio.destroy(function() {
+      console.log('Closed pins, now exit');
+         });
+      }
+
 
 //   var optionsflickeroff = {
 //   mode: 'text',
