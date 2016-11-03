@@ -201,81 +201,32 @@ res.json("done");
 
 app.post('/bulbflicker', function(req, res)
 {
-
 var pin   = 16;
 var delay = 300;
 var count = 0;
 var max   = 20;
- 
 gpio.setup(pin, gpio.DIR_OUT, on);
- 
 function on() {
-    // if (count >= max) {
-    //     gpio.destroy(function() {
-    //         console.log('Closed pins, now exit');
-    //     });
-    //     return;
-    // }
- 
     setTimeout(function() {
         gpio.write(pin, 1, off);
         count += 1;
     }, delay);
 }
- 
 function off() {
     setTimeout(function() {
         gpio.write(pin, 0, on);
     }, delay);
 }
-
-//   var optionsflickeron = {
-//   mode: 'text',
-//   //pythonPath: '/usr/lib/python2.7',
-//   //pythonOptions: ['-u'],
-//    args: [10]
-// };
-//   console.log("bulbflicker is called");
-//   //console.log(req.body);
-//   PythonShell.run('bulbflickeron.py', optionsflickeron, function (err, results) {
-//   if (err) throw err;
-//   // results is an array consisting of messages collected during execution
-//   console.log("finished executing python script");
-//   console.log(results);
-// });
-// res.json("done");
-
 });
 app.post('/bulbflickeroff', function(req, res)
 {
-
-
 var pin   = 16;
- 
 gpio.setup(pin, gpio.DIR_OUT, on);
- 
 function on() {
          gpio.destroy(function() {
       console.log('Closed pins, now exit');
          });
       }
-
-
-//   var optionsflickeroff = {
-//   mode: 'text',
-//   //pythonPath: '/usr/lib/python2.7',
-//   //pythonOptions: ['-u'],
-//    args: [10]
-// };
-//   console.log("bulbflicker off is called");
-//   //console.log(req.body);
-//   PythonShell.run('bulbflickeron.py', optionsflickeroff, function (err, results) {
-//   if (err) throw err;
-//   // results is an array consisting of messages collected during execution
-//   console.log("finished executing python script");
-//   console.log(results);
-// });
-// res.json("done");
 });
 
 app.post('/glowled1', function(req, res)
