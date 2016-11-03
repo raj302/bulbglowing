@@ -206,16 +206,17 @@ var pin   = 16;
 var delay = 300;
 var count = 0;
 var max   = 20;
- 
+ count = req.body;
+ console.log("value of count"+count);
 gpio.setup(pin, gpio.DIR_OUT, on);
  
 function on() {
-    // if (count >= max) {
-    //     gpio.destroy(function() {
-    //         console.log('Closed pins, now exit');
-    //     });
-    //     return;
-    // }
+    if (count == 10) {
+        gpio.destroy(function() {
+            console.log('Closed pins, now exit');
+        });
+        return;
+    }
  
     setTimeout(function() {
         gpio.write(pin, 1, off);
