@@ -34,7 +34,7 @@ var gpio = require('rpi-gpio');
 
 var gpio = require('rpi-gpio');
  
-var pin   = 16;
+var pin   = 10;
 var delay = 200;
 var count = 0;
 var max   = 20;
@@ -200,8 +200,8 @@ res.json("done");
 app.post('/bulbflicker', function(req, res)
 {
 
-var pin   = 16;
-var delay = 500;
+var pin   = 10;
+var delay = 300;
 var count = 0;
 var max   = 20;
  
