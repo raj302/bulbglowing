@@ -570,6 +570,18 @@ $scope.flickerled1on = function()
 }
 $scope.flickerled1off = function()
 {
+  $http.post('/flickerled1off').success(function(response){
+         console.log(response);
+       });
+}
+$scope.flickerled1on = function()
+{
+  $http.post('/flickerled2on').success(function(response){
+         console.log(response);
+       });
+}
+$scope.flickerled2off = function()
+{
   $http.post('/flickerled2off').success(function(response){
          console.log(response);
        });
