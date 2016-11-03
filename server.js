@@ -308,7 +308,7 @@ res.json("done");
 
 app.post('/flickerled1on', function(req, res)
 {
-var pin   = 8;
+var pin   = 10;
 var delay = 500;
 var count = 0;
 var max   = 20;
@@ -331,7 +331,7 @@ function off() {
 
 app.post('/flickerled1off', function(req, res)
 {
-var pin   = 8;
+var pin   = 10;
 gpio.setup(pin, gpio.DIR_OUT, on);
 function on() {
          gpio.destroy(function() {
@@ -342,7 +342,7 @@ function on() {
 
 app.post('/flickerled2on', function(req, res)
 {
-var pin   = 10;
+var pin   = 8;
 var delay = 500;
 var count = 0;
 var max   = 20;
@@ -365,7 +365,7 @@ function off() {
 
 app.post('/flickerled2off', function(req, res)
 {
-var pin   = 10;
+var pin   = 8;
 gpio.setup(pin, gpio.DIR_OUT, on);
 function on() {
          gpio.destroy(function() {
