@@ -207,7 +207,7 @@ var delay = 300;
 var count = 0;
 var max   = 20;
  count = req.body;
- console.log("value of count"+count);
+ console.log("value of count"+req.body);
 gpio.setup(pin, gpio.DIR_OUT, on);
  
 function on() {
