@@ -18,9 +18,26 @@ var path=require('path');
 // var router=express.Router();
 var bodyPaser=require('body-parser');
 var http = require('http');
-var mongojs=require('mongojs');
-var collections=['register'];
-//var gpio = require('rpi-gpio');
+//var mongojs=require('mongojs');
+//var collections=['register'];
+var gpio = require('rpi-gpio');
+
+gpio.setup(16,gpio.DIR_OUT, write);
+
+function write() {
+  gpio.write(16,true,function(err){
+    if(err) throw err;
+    console.log("written to pin");
+ });
+}
+
+//var gpio=require("pi-gpio");
+//gpio.open(16,"output", function(err){
+   //gpio.write(16,1,function(){
+     //gpio.close(16);
+   //});
+  //});
+
 
 // python code execution starts here
 //this code takes time to execute. Try another if possible. name is python code 1
