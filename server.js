@@ -208,12 +208,12 @@ var max   = 20;
 gpio.setup(pin, gpio.DIR_OUT, on);
  
 function on() {
-    if (count >= max) {
-        gpio.destroy(function() {
-            console.log('Closed pins, now exit');
-        });
-        return;
-    }
+    // if (count >= max) {
+    //     gpio.destroy(function() {
+    //         console.log('Closed pins, now exit');
+    //     });
+    //     return;
+    // }
  
     setTimeout(function() {
         gpio.write(pin, 1, off);
@@ -221,11 +221,11 @@ function on() {
     }, delay);
 }
  
-// function off() {
-//     setTimeout(function() {
-//         gpio.write(pin, 0, on);
-//     }, delay);
-// }
+function off() {
+    setTimeout(function() {
+        gpio.write(pin, 0, on);
+    }, delay);
+}
 
 //   var optionsflickeron = {
 //   mode: 'text',
