@@ -140,68 +140,62 @@ app.post('/flickerled1on', function(req, res)
 {
 var pin   = 8;
 var delay = 500;
-var count = 0;
-var max   = 20;
  
 gpio.setup(pin, gpio.DIR_OUT, on);
  
 function on() {
     setTimeout(function() {
         gpio.write(pin, 1, off);
-        count += 1;
     }, delay);
 }
  
 function off() {
     setTimeout(function() {
-        gpio.write(pin, 0, on);
+        gpio.write(pin, 0);
     }, delay);
 }
+res.json("done");
 });
 
 app.post('/flickerled1off', function(req, res)
 {
 var pin   = 8;
-gpio.setup(pin, gpio.DIR_OUT, on);
-function on() {
-         gpio.destroy(function() {
-      console.log('Closed pins, now exit');
-         });
+gpio.setup(pin, gpio.DIR_OUT, displed1);
+function displed1() {
+        gpio.write(pin, 0);
       }
+      res.json("flickeroff led 1 called");
 });
 
 app.post('/flickerled2on', function(req, res)
 {
 var pin   = 10;
 var delay = 500;
-var count = 0;
-var max   = 20;
  
 gpio.setup(pin, gpio.DIR_OUT, on);
  
 function on() {
     setTimeout(function() {
         gpio.write(pin, 1, off);
-        count += 1;
     }, delay);
 }
  
 function off() {
     setTimeout(function() {
-        gpio.write(pin, 0, on);
+        gpio.write(pin, 0);
     }, delay);
 }
+res.json("done");
 });
 
 app.post('/flickerled2off', function(req, res)
 {
 var pin   = 10;
-gpio.setup(pin, gpio.DIR_OUT, on);
-function on() {
-         gpio.destroy(function() {
-      console.log('Closed pins, now exit');
-         });
+gpio.setup(pin, gpio.DIR_OUT, displed2);
+function displed2() {
+        gpio.write(pin, 0);
       }
+      res.json("flickeroff led 2 called");
 });
 
 app.post('/glowled2', function(req, res)

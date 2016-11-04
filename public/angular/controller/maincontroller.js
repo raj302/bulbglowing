@@ -579,24 +579,50 @@ $scope.cancelcountuptimerled2 = function()
 }
 $scope.flickerled1on = function()
 {
-  $http.post('/flickerled1on').success(function(response){
+
+  flickled1 = $interval(function() 
+    {
+      $http.post('/flickerled1on', $scope.flickstatus).success(function(response){
          console.log(response);
+         $scope.disableflickeron = true;
+         $scope.disableflickeroff = false;
        });
+    }, 602);
+  // $http.post('/flickerled1on').success(function(response){
+  //        console.log(response);
+  //      });
 }
 $scope.flickerled1off = function()
 {
+
+    if (angular.isDefined(flickled1)) {
+            $interval.cancel(flickled1);
+            flickled1 = undefined;
+          }
   $http.post('/flickerled1off').success(function(response){
          console.log(response);
        });
 }
 $scope.flickerled2on = function()
 {
-  $http.post('/flickerled2on').success(function(response){
+  flickled2 = $interval(function() 
+    {
+      $http.post('/flickerled2on', $scope.flickstatus).success(function(response){
          console.log(response);
+         $scope.disableflickeron = true;
+         $scope.disableflickeroff = false;
        });
+    }, 602);
+  // $http.post('/flickerled2on').success(function(response){
+  //        console.log(response);
+  //      });
 }
 $scope.flickerled2off = function()
 {
+  if (angular.isDefined(flickled2)) {
+            $interval.cancel(flickled2);
+            flickled2 = undefined;
+          }
   $http.post('/flickerled2off').success(function(response){
          console.log(response);
        });
