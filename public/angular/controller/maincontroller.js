@@ -4,8 +4,11 @@ app.config(function($routeProvider){
   //set up routes
 $routeProvider
 .when('/',{
-  templateUrl: 'angular/view/home.html',
+  templateUrl: 'angular/view/login.html',
   controller: 'homecontroller'
+})
+.when('/home',{
+  templateUrl: 'angular/view/home.html'
 })
 .otherwise({
   redirectTo: '/'
@@ -15,7 +18,7 @@ $routeProvider
 });
 
 
-app.controller('homecontroller',function($scope,$http,$localStorage,$timeout,$interval,$mdpDatePicker,$mdpTimePicker){
+app.controller('homecontroller',function($scope,$http,$localStorage,$timeout,$interval,$mdpDatePicker,$mdpTimePicker,$location){
 console.log("i am inside the home controller");
 var slides = [
   {image: 'image/r1.png', description: 'image 0'},
@@ -626,6 +629,16 @@ $scope.flickerled2off = function()
   $http.post('/flickerled2off').success(function(response){
          console.log(response);
        });
+}
+
+$scope.loginauth = function()
+{
+  if($scope.emailvalue == 'pi' && $scope.passwordvalue == 'raspberry')
+  {
+    alert(" email is"+$scope.emailvalue);
+    alert("password is"+$scope.passwordvalue);
+    //$location.path( "/home" );
+  }
 }
 $scope.varyled1brightness = function()
 {
