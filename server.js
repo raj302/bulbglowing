@@ -132,12 +132,10 @@ app.post('/bulbflickeroff', function(req, res)
 var pin   = 16;
 gpio.setup(pin, gpio.DIR_OUT, on);
 function on() {
-         gpio.write(pin, 0);
+         gpio.destroy(function() {
+      console.log('Closed pins, now exit');
+         });
       }
-
-  function disp(){
-    console.log("pin closed");
-  }
 });
 
 app.post('/glowled1', function(req, res)
@@ -196,12 +194,10 @@ app.post('/flickerled1off', function(req, res)
 var pin   = 8;
 gpio.setup(pin, gpio.DIR_OUT, on);
 function on() {
-         gpio.write(pin, 0);
+         gpio.destroy(function() {
+      console.log('Closed pins, now exit');
+         });
       }
-
- function displed1(){
-  console.log("led1 closed");
- }
 });
 
 app.post('/flickerled2on', function(req, res)
@@ -232,11 +228,10 @@ app.post('/flickerled2off', function(req, res)
 var pin   = 10;
 gpio.setup(pin, gpio.DIR_OUT, on);
 function on() {
-         gpio.write(pin, 0);
+         gpio.destroy(function() {
+      console.log('Closed pins, now exit');
+         });
       }
-function displed2(){
-  console.log("led2 off");
-}
 });
 
 app.post('/glowled2', function(req, res)
