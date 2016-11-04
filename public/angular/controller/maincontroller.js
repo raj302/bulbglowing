@@ -593,7 +593,7 @@ $scope.flickerled1on = function()
          $scope.disableflickeron = true;
          $scope.disableflickeroff = false;
        });
-    }, 602);
+    }, 1000);
   // $http.post('/flickerled1on').success(function(response){
   //        console.log(response);
   //      });
@@ -618,7 +618,7 @@ $scope.flickerled2on = function()
          $scope.disableflickeron = true;
          $scope.disableflickeroff = false;
        });
-    }, 602);
+    }, 1000);
   // $http.post('/flickerled2on').success(function(response){
   //        console.log(response);
   //      });
