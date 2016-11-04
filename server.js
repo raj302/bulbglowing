@@ -83,7 +83,7 @@ res.json("done");
 app.post('/bulbflicker', function(req, res)
 {
 var pin   = 16;
-var delay = 300;
+var delay = 500;
 gpio.setup(pin, gpio.DIR_OUT, on);
 function on() {
     setTimeout(function() {

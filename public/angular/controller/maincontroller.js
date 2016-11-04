@@ -229,7 +229,7 @@ $scope.bulbflicker = function()
          $scope.disableflickeron = true;
          $scope.disableflickeroff = false;
        });
-    }, 800);
+    }, 1000);
 
   // $http.post('/bulbflicker', $scope.flickstatus).success(function(response){
   //        console.log(response);
