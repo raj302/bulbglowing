@@ -84,30 +84,28 @@ app.post('/bulbflicker', function(req, res)
 {
 var pin   = 16;
 var delay = 300;
-var count = 0;
-var max   = 20;
 gpio.setup(pin, gpio.DIR_OUT, on);
 function on() {
     setTimeout(function() {
         gpio.write(pin, 1, off);
-        count += 1;
     }, delay);
 }
 function off() {
-    setTimeout(function() {
-        gpio.write(pin, 0, on);
+        setTimeout(function() {
+        gpio.write(pin, 0);
     }, delay);
 }
+res.json("on and off called once");
 });
+
 app.post('/bulbflickeroff', function(req, res)
 {
 var pin   = 16;
-gpio.setup(pin, gpio.DIR_OUT, on);
-function on() {
-         gpio.destroy(function() {
-      console.log('Closed pins, now exit');
-         });
+gpio.setup(pin, gpio.DIR_OUT, disp);
+function disp() {
+        gpio.write(pin, 0);
       }
+      res.json("bulb flicker off called");
 });
 
 app.post('/glowled1', function(req, res)

@@ -221,16 +221,27 @@ $scope.bulbflicker = function()
   $scope.disableonbutton = true;
   $scope.disabletimerbutton = true;
   $scope.flickstatus = 10 ;
-  $http.post('/bulbflicker', $scope.flickstatus).success(function(response){
+
+  flick = $interval(function() 
+    {
+      $http.post('/bulbflicker', $scope.flickstatus).success(function(response){
          console.log(response);
          $scope.disableflickeron = true;
          $scope.disableflickeroff = false;
        });
+    }, 1000);
+
+  // $http.post('/bulbflicker', $scope.flickstatus).success(function(response){
+  //        console.log(response);
+  //        $scope.disableflickeron = true;
+  //        $scope.disableflickeroff = false;
+  //      });
 }
 $scope.bulbflickeroff = function()
 {
   $scope.disableonbutton = false;
   $scope.disabletimerbutton = false;
+  $interval.cancel(flick);
   $http.post('/bulbflickeroff').success(function(response){
          console.log(response);
          $scope.disableflickeron = false;
