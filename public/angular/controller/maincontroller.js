@@ -637,6 +637,8 @@ $scope.flickerled2off = function()
 $scope.loginauth = function()
 {
   alert("loginauth button is called");
+   alert(" email is"+$scope.emailvalue);
+    alert("password is"+$scope.passwordvalue);
   if($scope.emailvalue == 'pi' && $scope.passwordvalue == 'raspberry')
   {
     alert(" email is"+$scope.emailvalue);
