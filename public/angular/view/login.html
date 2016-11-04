@@ -91,11 +91,28 @@ margin-bottom: 40px;
 
 </style>
 <div class="aa">
-    <div >
-<img ng-show="image_error" ng-src="{{profileImg}}">
-</div>
 <h2>LOGIN</h2>
 <form>
+
+
+    <div layout="row" layout-xs="row">
+        <div flex>
+        <md-input-container>
+        <label>Email</label>
+        <input ng-model="emailvalue" type="email">
+      </md-input-container>
+  </div>
+
+      <div flex>
+        <md-input-container>
+        <label>Email</label>
+        <input ng-model="emailvalue" type="email">
+      </md-input-container>
+  </div>
+</div>
+
+
+
 email id <br>
 <input type="text" placeholder="please enter your email-id..."  ng-change="myfunc()" ng-model="emailvalue" ><br><br>
 password<br>
