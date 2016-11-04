@@ -241,7 +241,10 @@ $scope.bulbflickeroff = function()
 {
   $scope.disableonbutton = false;
   $scope.disabletimerbutton = false;
-  $interval.cancel(flick);
+  if (angular.isDefined(flick)) {
+            $interval.cancel(flick);
+            flick = undefined;
+          }
   $http.post('/bulbflickeroff').success(function(response){
          console.log(response);
          $scope.disableflickeron = false;
