@@ -132,7 +132,7 @@ app.post('/bulbflickeroff', function(req, res)
 var pin   = 16;
 gpio.setup(pin, gpio.DIR_OUT, on);
 function on() {
-         gpio.write(pin, 0, disp);
+         gpio.write(pin, 0);
       }
 
   function disp(){
@@ -196,7 +196,7 @@ app.post('/flickerled1off', function(req, res)
 var pin   = 8;
 gpio.setup(pin, gpio.DIR_OUT, on);
 function on() {
-         gpio.write(pin, 0, displed1);
+         gpio.write(pin, 0);
       }
 
  function displed1(){
@@ -232,7 +232,7 @@ app.post('/flickerled2off', function(req, res)
 var pin   = 10;
 gpio.setup(pin, gpio.DIR_OUT, on);
 function on() {
-         gpio.write(pin, 0, displed2);
+         gpio.write(pin, 0);
       }
 function displed2(){
   console.log("led2 off");
