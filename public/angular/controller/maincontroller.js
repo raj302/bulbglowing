@@ -637,7 +637,7 @@ $scope.loginauth = function()
   {
     alert(" email is"+$scope.emailvalue);
     alert("password is"+$scope.passwordvalue);
-    //$location.path( "/home" );
+    $location.path( "/home" );
   }
 }
 $scope.varyled1brightness = function()
