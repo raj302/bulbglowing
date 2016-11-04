@@ -8,7 +8,8 @@ $routeProvider
   controller: 'homecontroller'
 })
 .when('/home',{
-  templateUrl: 'angular/view/home.html'
+  templateUrl: 'angular/view/home.html',
+  controller: 'homecontroller'
 })
 .otherwise({
   redirectTo: '/'
@@ -42,6 +43,8 @@ function nextSlide() {
 function loadSlides() {
     $timeout(nextSlide, INTERVAL);
 }
+
+
 $scope.slides = slides;
 $scope.currentIndex = 0;
 $scope.setCurrentSlideIndex = setCurrentSlideIndex;
