@@ -95,7 +95,7 @@ margin-bottom: 40px;
 <form>
 
 
-    <div layout="row" layout-xs="row">
+    <div layout="column" layout-xs="column">
         <div flex>
         <md-input-container>
         <label>Email</label>
@@ -110,15 +110,10 @@ margin-bottom: 40px;
       </md-input-container>
   </div>
 </div>
-
-
-
-email id <br>
-<input type="text" placeholder="please enter your email-id..."  ng-change="myfunc()" ng-model="emailvalue" ><br><br>
-password<br>
-<input type="password" placeholder="please enter your password..." ng-model="passwordvalue"><br><br>
-<input type="checkbox" value="remember me">keep me loged in><br><br>
-<button class="button" ng-click="loginauth()">LOGIN</button><br>
-<a href="#">Forgotten password?</a>
+<div>
+<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+  <md-button class="md-raised" ng-click="loginauth()" >LOGIN</md-button>
+</section>
+</div>
 </form>
 </div>
